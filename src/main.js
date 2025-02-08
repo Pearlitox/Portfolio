@@ -16,9 +16,13 @@ camera.position.setZ(30);
 
 renderer.render( scene, camera );
 
-const loader = new GLTFLoader();
-loader.load('meshes/star-web.gltf', function ( gltf ){
+const texture = new THREE.TextureLoader().load('./matcap-iridescent.png' ); 
 
+const material = new THREE.MeshBasicMaterial( { map:texture } );
+
+const loader = new GLTFLoader();
+loader.load('./star-web.gltf', function ( gltf ){
+  
   scene.add( gltf.scene );
   console.log('done')
 
