@@ -18,16 +18,40 @@ renderer.render( scene, camera );
 
 const texture = new THREE.TextureLoader().load('./matcap-iridescent.png' ); 
 
-const material = new THREE.MeshBasicMaterial( { map:texture } );
+const material = new THREE.MeshMatcapMaterial( { matcap:texture } );
+
+let model;
 
 const loader = new GLTFLoader();
-loader.load('./star-web.gltf', function ( gltf ){
+loader.load('./star-web.gltf', function (gltf) {
+  model = gltf.scene;
+
+  // Appliquer le matcap à tous les meshes
+  model.traverse((child) => {
+    if (child.isMesh) {
+      child.material = material;
+    }
+  });
+  model.scale.set(100,100,100)
+  model.rotation.x = 0
+  scene.add(model);
+
   
-  scene.add( gltf.scene );
-  console.log('done')
+  animate(); // Lancer l'animation après chargement du modèle
 
-}, undefined, function ( error ) {
+}, undefined, function (error) {
+  console.error(error);
+});
 
-	console.error( error );
 
-} );
+
+
+// Animation
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+  model.rotation.y += 0.01;
+  
+}
+
+animate();
