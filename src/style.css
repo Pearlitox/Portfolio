@@ -7,7 +7,22 @@
   font-family: Cyrene;
   src: url(Cyrene+Regular+Advanced.otf);
 }
-
+@font-face {
+  font-family: Gesego;
+  src: url(Gesego-Regular.otf);
+}
+@font-face {
+  font-family: figtree;
+  src: url(Figtree-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: Kilo;
+  src: url(Kilo.otf);
+}
+@font-face {
+  font-family: Milky Well;
+  src: url(MilkyWell.ttf);
+}
 .bg{
   position: fixed;
   top: 0;
@@ -15,21 +30,68 @@
   z-index: -1;
 }
 body{
-  color: white;
+  color: rgb(0, 0, 0);
+  font-family: figtree;
+  margin: 0;
 }
 .section{
-
-  width: 100%;
-  height: 100vh;
-}
-.landing{
- display: flex;
- flex-direction: column;
-  justify-content:center;
+  display: flex;
+  flex-flow: row wrap;
   align-items: center;
+  width: 60%;
+  height: 100vh;
+  margin: 0 auto;
 }
-.landing__title{
+
+.title{
+
+  font-family: Kilo;
+  font-size: var(--step-6);
+}
+.subtitle{
 
   font-family: Cyrene;
-  font-size: var(--step-6);
+  font-size: var(--step-3);
+}
+.paragraph{
+  font-size: var(--step-1);
+  max-width: 50ch;
+}
+.landing{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__logo{
+  width: 3.15em;
+}
+.nav{
+  position: absolute;
+  width: 100%;
+  padding: 0.5em 1em;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.nav__list{
+  display: flex;
+  flex-flow: row nowrap;
+  list-style: none;
+  font-family: Cyrene;
+  font-size: var(--step-1);
+
+}
+.nav__el{
+
+  margin-left: 1em;
+
+}
+.aboutme__txt, .projets__txt{
+  backdrop-filter: blur(10px);
+  padding: 2.25em 1.5em;
+  border-radius: 1.5em;
 }
