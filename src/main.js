@@ -6,6 +6,7 @@ import { gsap } from "gsap";
     
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+console.clear();
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,6 +41,78 @@ loader.load('./star-web.gltf', function (gltf) {
   model.rotation.z = 120
   scene.add(model);
 
+
+gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline({
+    scrollTrigger:{
+      trigger: '.landing',
+      start : 'top top',
+      scrub: true,
+
+    }
+
+  });
+  const tl1 = gsap.timeline({
+    scrollTrigger:{
+      trigger: '.aboutme',
+      start : 'center top',
+      scrub: true,
+
+    }
+
+  });
+  const tl2 = gsap.timeline({
+    scrollTrigger:{
+      trigger: '.projets',
+      start : 'center top',
+      scrub: true,
+
+    }
+
+  });
+  const tl3 = gsap.timeline({
+    scrollTrigger:{
+      trigger: '.footer',
+      start : 'top bottom',
+      scrub: true,
+
+    }
+
+  });
+
+  tl.to(model.position,{
+    y : -5,
+    x:10,
+    z:10,
+    duration: 9
+  });
+
+  tl1.to(model.position,{
+    y :-20,
+    x:0,
+    z:-5,
+    duration: 9
+  });
+
+  tl2.to(model.position,{
+    y :0,
+    x:-15,
+    z:0,
+    duration: 9
+  });
+  tl2.to(model.rotation,{
+    y :3,
+    duration: 9,
+    
+
+  },"-=9");
+  tl3.to(model.position,{
+    y :0,
+    x:0,
+    z:0,
+    duration: 9
+  });
+
   
   animate(); // Lancer l'animation après chargement du modèle
 
@@ -52,6 +125,7 @@ function animate() {
 
   //model.rotation.y += 0.01;
   model.rotation.z += 0.01;
+  
   renderer.render(scene, camera);
 }
 
