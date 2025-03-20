@@ -36,7 +36,6 @@ body{
 }
 .section{
   display: flex;
-  flex-flow: row wrap;
   align-items: center;
   width: 60%;
   height: 100vh;
@@ -91,7 +90,45 @@ body{
 
 }
 .aboutme__txt, .projets__txt{
-  backdrop-filter: blur(10px);
+  /*backdrop-filter: blur(10px);*/
   padding: 2.25em 1.5em;
   border-radius: 1.5em;
+}
+.projets{
+    flex-direction: column;
+}
+.projets__slider{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.projets__web, .projets__dessin{
+
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap ;
+  align-items: center;
+  justify-content: center;
+}
+.projets__dessin--1, .projets__dessin--2, .projets__dessin--3{
+  padding: 1em 0;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1.5em;
+  font-size: var(--step-1);
+  border-radius: 1.5em;
+  
+}
+.projets__dessin--1 img, .projets__dessin--2 img, .projets__dessin--3 img{
+  background-color: aliceblue;
+  width: 100%;
+  border-radius: 1.5em;
+  
+  
 }
