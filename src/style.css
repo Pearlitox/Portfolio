@@ -96,3 +96,14 @@ body{
   padding: 2.25em 1.5em;
   border-radius: 1.5em;
 }
+
+.footer{
+  background-color: black;
+  box-sizing: border-box;
+  height: 20em;
+  width: 100%;
+  padding: 1em 2.25em;
+}
+.footer__subtitle{
+  color: aliceblue;
+}
