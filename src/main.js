@@ -40,6 +40,30 @@ loader.load('./star-web.gltf', function (gltf) {
   model.rotation.z = 120
   scene.add(model);
 
+
+gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline({
+    scrollTrigger:{
+      trigger: '.landing',
+      start : 'top top',
+      scrub: true,
+      markers : true
+    }
+  });
+
+  tl.to(model.position,{
+    y : -5,
+    x:10,
+    z:5,
+    duration: 9
+  });
+
+  tl.to(model.position,{
+    y : 5,
+    x:0,
+    z:-5,
+    duration: 9
+  });
   
   animate(); // Lancer l'animation après chargement du modèle
 
