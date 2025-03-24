@@ -115,7 +115,7 @@ body{
 }
 .projets__dessin--1, .projets__dessin--2, .projets__dessin--3{
   padding: 1em 0;
-  backdrop-filter: blur(10px);
+  /*backdrop-filter: blur(10px);*/
   display: flex;
   flex-direction: column;
   justify-content: center;
