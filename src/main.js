@@ -70,15 +70,6 @@ gsap.registerPlugin(ScrollTrigger);
     }
 
   });
-  const tl3 = gsap.timeline({
-    scrollTrigger:{
-      trigger: '.footer',
-      start : 'top bottom',
-      scrub: true,
-
-    }
-
-  });
 
   tl.to(model.position,{
     y : -5,
@@ -106,14 +97,7 @@ gsap.registerPlugin(ScrollTrigger);
     
 
   },"-=9");
-  tl3.to(model.position,{
-    y :0,
-    x:0,
-    z:0,
-    duration: 9
-  });
 
-  
   animate(); // Lancer l'animation après chargement du modèle
 
 }, undefined, function (error) {
