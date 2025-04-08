@@ -34,10 +34,6 @@ let darkmodestate = false;
 
 const darkmodebtn = document.querySelector('.darkmode');
 
-darkmodebtn.addEventListener('click', function(){
-  darkmodestate = !darkmodestate
-  console.log(darkmodestate);
-})
 
 
 const loader = new GLTFLoader();
@@ -46,15 +42,26 @@ loader.load('./star-web.gltf', function (gltf) {
 
   model.traverse((child) => {
     if (child.isMesh) {
-      if(darkmodestate===false){
         child.material = material;
-      }else{
-        child.material = material2;
-      }
-      
-
     }
   });
+  darkmodebtn.addEventListener('click', function(){
+  darkmodestate = !darkmodestate
+  console.log(darkmodestate);
+  updateMaterial();
+})
+
+  function updateMaterial() {
+    model.traverse((child) => {
+      if (child.isMesh) {
+        if (darkmodestate) {
+          child.material = material2; // Mode sombre
+        } else {
+          child.material = material; // Mode normal
+        }
+      }
+    });
+  }
 
   model.scale.set(160,160,160)
   model.rotation.z = 120
