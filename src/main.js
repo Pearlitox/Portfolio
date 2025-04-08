@@ -45,14 +45,25 @@ loader.load('./star-web.gltf', function (gltf) {
         child.material = material;
     }
   });
-  darkmodebtn.addEventListener('click', function(){
-  darkmodestate = !darkmodestate
-  console.log(darkmodestate);
-  updateMaterial();
-})
+    darkmodebtn.addEventListener('click', function(){
+    darkmodestate = !darkmodestate
+    console.log(darkmodestate);
 
-  function updateMaterial() {
+    update();
+  })
+
+
+
+  function update() {
+
     model.traverse((child) => {
+      if(darkmodestate){
+        scene.background = new THREE.Color().setHex(0x111111);
+        document.body.style.color = "#eeeeee"
+      }else{
+        scene.background = new THREE.Color().setHex(0xe3e0ef);
+        document.body.style.color = "#000000"
+      }
       if (child.isMesh) {
         if (darkmodestate) {
           child.material = material2; // Mode sombre
@@ -145,6 +156,7 @@ gsap.registerPlugin(ScrollTrigger);
 }, undefined, function (error) {
   console.error(error);
 });
+
 // Animation
 function animate() {
   requestAnimationFrame(animate);
