@@ -6,7 +6,7 @@ import { gsap } from "gsap";
     
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-console.clear();
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,11 +21,24 @@ camera.position.setZ(30);
 renderer.render( scene, camera );
 scene.background = new THREE.Color().setHex(0xe3e0ef);
 
-const texture = new THREE.TextureLoader().load('./matcap-iridescent.png' ); 
+const texture = new THREE.TextureLoader().load('./matcap-iridescent.png' );
+const texture2 = new THREE.TextureLoader().load('./matcap-chrome.png' );
+const texture3 = new THREE.TextureLoader().load('./matcap-iridescent.png' );  
 const material = new THREE.MeshMatcapMaterial( { matcap:texture } );
-
+const material2 = new THREE.MeshMatcapMaterial( { matcap:texture2 } );
+const material3 = new THREE.MeshMatcapMaterial( { matcap:texture3 } );
 
 let model;
+
+let darkmodestate = false;
+
+const darkmodebtn = document.querySelector('.darkmode');
+
+darkmodebtn.addEventListener('click', function(){
+  darkmodestate = !darkmodestate
+  console.log(darkmodestate);
+})
+
 
 const loader = new GLTFLoader();
 loader.load('./star-web.gltf', function (gltf) {
@@ -33,7 +46,13 @@ loader.load('./star-web.gltf', function (gltf) {
 
   model.traverse((child) => {
     if (child.isMesh) {
-      child.material = material;
+      if(darkmodestate===false){
+        child.material = material;
+      }else{
+        child.material = material2;
+      }
+      
+
     }
   });
 
