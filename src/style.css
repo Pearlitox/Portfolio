@@ -105,7 +105,7 @@ body{
   justify-content: center;
 
 }
-.projets__web, .projets__dessin{
+.projets__web, .projets__dessin, .projets__3d{
 
   width: 100%;
   display: flex;
