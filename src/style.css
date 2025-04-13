@@ -119,9 +119,14 @@ body{
 
 }
 .nav__el{
-
-  margin-left: 1em;
-
+  padding: 0.25em 0.5em;
+  border-bottom: solid white;
+}
+.nav__el:hover{
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--color-bg-btn);
+  border-bottom: solid var(--color-bg-btn);
 }
 .aboutme__txt, .projets__txt{
   /*backdrop-filter: blur(10px);*/
@@ -159,7 +164,7 @@ body{
   align-items: center;
   margin: 0 1.5em;
   font-size: var(--step-1);
-  border-radius: 1.5em;
+  border-radius: var(--step-1);
   
 }
 .projets__dessin--1 img, .projets__dessin--2 img, .projets__dessin--3 img{
