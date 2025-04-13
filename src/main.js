@@ -19,21 +19,21 @@ renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
 camera.position.setZ(30);
 renderer.render( scene, camera );
-scene.background = new THREE.Color().setHex(0xe3e0ef);
+
 
 const texture = new THREE.TextureLoader().load('./matcap-iridescent.png' );
 const texture2 = new THREE.TextureLoader().load('./matcap-chrome.png' );
 const texture3 = new THREE.TextureLoader().load('./matcap-iridescent.png' );  
 const material = new THREE.MeshMatcapMaterial( { matcap:texture } );
 const material2 = new THREE.MeshMatcapMaterial( { matcap:texture2 } );
-const material3 = new THREE.MeshMatcapMaterial( { matcap:texture3 } );
-
 let model;
 
-let darkmodestate = false;
 
-const darkmodebtn = document.querySelector('.darkmode');
 
+var activeTheme = localStorage.getItem("theme");
+if(activeTheme) {
+  document.body.setAttribute("data-theme", activeTheme);
+}
 
 
 const loader = new GLTFLoader();
@@ -45,35 +45,27 @@ loader.load('./star-web.gltf', function (gltf) {
         child.material = material;
     }
   });
-    darkmodebtn.addEventListener('click', function(){
-    darkmodestate = !darkmodestate
-    console.log(darkmodestate);
+  const darkmodebtn = document.querySelector('.darkmode');
+  darkmodebtn.addEventListener('click', themeSelect);
+  function themeSelect() {
+    var currentMode = document.body.getAttribute("data-theme");
+    var systemThemeDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    update();
-  })
-
-
-
-  function update() {
-
-    model.traverse((child) => {
-      if(darkmodestate){
-        scene.background = new THREE.Color().setHex(0x111111);
-        document.body.style.color = "#eeeeee"
-      }else{
+    if((!currentMode && systemThemeDark) || currentMode == "dark") {
         scene.background = new THREE.Color().setHex(0xe3e0ef);
-        document.body.style.color = "#000000"
-      }
-      if (child.isMesh) {
-        if (darkmodestate) {
-          child.material = material2; // Mode sombre
-        } else {
-          child.material = material; // Mode normal
-        }
-      }
-    });
+        darkmodebtn.innerText = "darkmode"
+        document.body.setAttribute('data-theme', "light");
+        localStorage.setItem("theme", "light");
+        child.material = material;
+    } else {
+        scene.background = new THREE.Color().setHex(0x000000);
+        darkmodebtn.innerText = "lightmode"
+        document.body.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        
+        child.material = material2;
+    }
   }
-
   model.scale.set(160,160,160)
   model.rotation.z = 120
   scene.add(model);
@@ -109,9 +101,9 @@ gsap.registerPlugin(ScrollTrigger);
   });
 
   tl.to(model.position,{
-    y : -5,
+    y : -2,
     x:10,
-    z:10,
+    z:15,
     duration: 9
   });
 
