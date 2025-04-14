@@ -1,11 +1,10 @@
 import './style.css'
-
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { gsap } from "gsap";
     
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -28,7 +27,7 @@ const material = new THREE.MeshMatcapMaterial( { matcap:texture } );
 const material2 = new THREE.MeshMatcapMaterial( { matcap:texture2 } );
 let model;
 
-
+const controls = new OrbitControls(camera, renderer.domElement)
 
 var activeTheme = localStorage.getItem("theme");
 if(activeTheme) {
@@ -87,7 +86,7 @@ gsap.registerPlugin(ScrollTrigger);
       start : 'center top',
       scrub: true,
 
-    }
+    }0
 
   });
   const tl2 = gsap.timeline({
@@ -136,7 +135,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Animation
 function animate() {
   requestAnimationFrame(animate);
-
+  controls.update();
   //model.rotation.y += 0.01;
   model.rotation.z += 0.01;
   
