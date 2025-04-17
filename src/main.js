@@ -49,7 +49,7 @@ loader.load('./star-web.gltf', function (gltf) {
   function themeSelect() {
     var currentMode = document.body.getAttribute("data-theme");
     var systemThemeDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
+//mettre dans des fonctions séparée et fair eau chargeùent 
     if((!currentMode && systemThemeDark) || currentMode == "dark") {
         scene.background = new THREE.Color().setHex(0xe3e0ef);
         darkmodebtn.innerText = "darkmode"
