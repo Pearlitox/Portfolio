@@ -1,5 +1,6 @@
 :root {
   --step-6: clamp(4.7684rem, 15.6131rem + -13.9932vw, 12.8145rem);
+
   --step-3: clamp(2.4414rem, 4.2683rem + -2.3573vw, 3.7969rem);
   --step-1: clamp(1.5625rem, 1.731rem + -0.2174vw, 1.6875rem);
   --color-text: #000000;
