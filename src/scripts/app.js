@@ -28,7 +28,8 @@ links.forEach(element => {
         gsap.to(star, {
             scale: 60,
             duration:1,
-            rotate: 70
+            rotate: 70,
+            yoyo: true
         });
           }
     })
@@ -102,6 +103,7 @@ loader.load('./assets/meshes/star-web.gltf', function (gltf) {
     if (child.isMesh) {
         child.material = material;
      const darkmodebtn = document.querySelector('.darkmode');
+     const nav = document.querySelector('.nav');
      darkmodebtn.addEventListener('click', themeSelect);
      let darkorlight = true;
      function themeSelect() {
@@ -111,9 +113,10 @@ loader.load('./assets/meshes/star-web.gltf', function (gltf) {
         darkmodebtn.innerText = "lightmode"
         child.material = material2;
         document.body.style.color = "white";
+        nav.style.color ="black";
     } else {
         scene.background = new THREE.Color().setHex(0xe3e0ef);
-        darkmodebtn.innerText = "darkmode"
+        darkmodebtn.innerText = "darkmode";
         document.body.style.color = "black";
         child.material = material;
     }
