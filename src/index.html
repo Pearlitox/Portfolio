@@ -1,29 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="src/Fichier 2.svg" />
+    <link rel="icon" type="image/svg+xml" href="assets/images/Star-black.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pearl Bondele</title>
   </head>
-  <body>
-      <nav class="nav">
-        <img class="nav__logo" src="src/iconpb.svg" alt="">
-        <ul class="nav__list">
-          <li class="nav__el">
-            Qui suis-je ?
-          </li>
-          <li class="nav__el">
-            Projets
-          </li>
-          <li class="nav__el">
-            Stages
-          </li>
-        </ul>
-        <button class="darkmode btn"></button>
-      </nav>
+
+  <meta name="description" content="">
+  <!-- Meta Partage -->
+  <!-- Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="styles/app.css">
+
+  <script src="scripts/app.js" defer></script>
+</head>
+<body data-theme="light">
+
+  <div class="transition">
+    <div class="transition__star"></div>
+    <div class="transition__star2"></div>
+  </div>
+
+  <nav class="nav">
+  <img src="assets/images/iconpb.svg" class="nav__logo" alt="">
+    <ul class="nav__list">
+      <li class="nav__el">
+        Qui suis-je ?
+      </li>
+      <li class="nav__el">
+        Projets
+      </li>
+      <li class="nav__el">
+        Stages
+      </li>
+    </ul>
+    <button class="darkmode btn">darkmode</button>
+  </nav>
     <canvas class="bg"></canvas>
-    <header class="landing">
+
+<header class="landing">
 
       <h1 class="landing__title title">Pearl Bondele</h1>
       <h2 class="landing__subtitle subtitle">Webdesign-Graphisme-Illustration</h2>
@@ -48,7 +65,7 @@
       </div>
       
     </section>
-    <section class="projets section">
+    <section class="projets">
       <div class="projets__txt">
         <h2 class="projets__subtitle subtitle">
           Projets
@@ -56,6 +73,20 @@
         <p class="projets__paragraph paragraph">
           Du dessin au Webdesign en passant par la 3D, voici tout mes projets scolaires et personnels ainsi que les technologies utilisées pour les réaliser.
         </p>
+        <div class="projets__1">
+              <a class="link" href="assets/pages/dataplay.html"><img src="assets/images/girldrawing.png" class="projets__img" alt=""></a>
+  
+        </div>
+        <div class="projets__2">
+              <a class="link" href="assets/pages/dataplay.html"><img src="assets/images/drawingurl-sitting-down.png" class="projets__img" alt=""></a>
+  
+          </div>
+          <div class="projets__3">
+              <a class="link" href="assets/pages/dataplay.html"><img src="assets/images/statgirl.png" class="projets__img" alt=""></a>
+  
+          </div>
+        </div>
+        </div>
         
       </div>
  
@@ -67,7 +98,7 @@
       </h2>
       
       <p class="projets__paragraph paragraph">
-        
+        Je suis à la recherche d'un stage axé sur le développement frontend de 3 mois pour ma dernière année d'études. Si mon profil vous intéresse, contactez moi !
       </p>
     </section>
     <footer class="footer">
@@ -78,4 +109,7 @@
     </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
+</html>
+
+</body>
 </html>
