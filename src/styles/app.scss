@@ -149,10 +149,10 @@ display: flex;
 flex-direction: column;
 
   width: 60%;
-  height: 200vh;
+  height: 300vh;
   margin: 0 auto;
     &__img{
-
+      border-radius: 2.25em;
       width: 50%;
     }
     &__1{
@@ -251,6 +251,11 @@ z-index: 20;
         width: 50%;
       }
     }
+
+}
+.stage{
+  width: 60%;
+  margin: 0 auto;
 
 }
 .footer{

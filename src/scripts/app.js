@@ -79,6 +79,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/ window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('.bg'),
+  antialias: true
 });
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -90,8 +91,17 @@ const texture = new THREE.TextureLoader().load('./assets/images/matcap-iridescen
 const texture2 = new THREE.TextureLoader().load('./assets/images/matcap-chrome.png' ); 
 const material = new THREE.MeshMatcapMaterial( { matcap:texture } );
 const material2 = new THREE.MeshMatcapMaterial( { matcap:texture2 } );
+//path
+const curve = new THREE.CatmullRomCurve3([
+  new THREE.Vector3(0,0,0),
+  new THREE.Vector3(0.02,-0.02,0.15),
+  new THREE.Vector3(0.08,-0.01,0.1),
+  new THREE.Vector3(0.1,-0.04,0),
+  new THREE.Vector3(-0.15,0.01,-0.07),
+     new THREE.Vector3(0,0,0),
+
+])
 let model;
-let pictureframes;
 var activeTheme = localStorage.getItem("theme");
 if(activeTheme) {
   document.body.setAttribute("data-theme", activeTheme);
@@ -102,6 +112,8 @@ loader.load('./assets/meshes/star-web.gltf', function (gltf) {
   model.traverse((child) => {
     if (child.isMesh) {
         child.material = material;
+
+    //dark mode
      const darkmodebtn = document.querySelector('.darkmode');
      const nav = document.querySelector('.nav');
      darkmodebtn.addEventListener('click', themeSelect);
@@ -120,22 +132,45 @@ loader.load('./assets/meshes/star-web.gltf', function (gltf) {
         document.body.style.color = "black";
         child.material = material;
     }
-  }
+    }
+    const o = { progress: 0 }
+    gsap.to(o, {
+      progress : 1,
+      scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+          onUpdate: () => {
+            const point = curve.getPoint(o.progress);
+            child.position.copy(point);
+          }
+      }
+    })
+    //follow path
     }
   });
+  //centrer le mesh
+  var box = new THREE.Box3().setFromObject(model);
+  box.getCenter(model.position);
+  model.position.multiplyScalar( - 1 );
+  
   model.scale.set(160,160,160)
-  model.rotation.z = 120
+
   scene.add(model);
   animate(); 
 }, undefined, function (error) {
   console.error(error);
 });
 
+  var pivot = new THREE.Group();
+    scene.add( pivot );
+    pivot.add( model );
 // Animation
 function animate() {
   requestAnimationFrame(animate);
 
-  model.rotation.z -= 0.01;
+  pivot.rotation.z -= 0.01;
   
   renderer.render(scene, camera);
 }
