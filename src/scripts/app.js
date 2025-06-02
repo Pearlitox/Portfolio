@@ -94,12 +94,13 @@ const material = new THREE.MeshMatcapMaterial({ matcap: texture });
 const material2 = new THREE.MeshMatcapMaterial({ matcap: texture2 });
 //path
 const curve = new THREE.CatmullRomCurve3([
-  new THREE.Vector3(0, 0, 0),
+  new THREE.Vector3(0, 0, -0.01),
   new THREE.Vector3(0.02, -0.02, 0.15),
   new THREE.Vector3(0.08, -0.01, 0.1),
   new THREE.Vector3(0.1, -0.04, 0),
   new THREE.Vector3(-0.15, 0.01, -0.07),
-  new THREE.Vector3(0, 0, 0),
+  new THREE.Vector3(0, 0, 0.10),
+
 ]);
 let model;
 
@@ -156,6 +157,7 @@ loader.load(
             onUpdate: () => {
               const point = curve.getPoint(o.progress);
               child.position.copy(point);
+              child.lookAt(curve.getPointAt(0.99));
             },
           },
         });
