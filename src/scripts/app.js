@@ -102,6 +102,7 @@ const curve = new THREE.CatmullRomCurve3([
 
 ])
 let model;
+
 var activeTheme = localStorage.getItem("theme");
 if(activeTheme) {
   document.body.setAttribute("data-theme", activeTheme);
@@ -109,6 +110,9 @@ if(activeTheme) {
 const loader = new GLTFLoader();
 loader.load('./assets/meshes/star-web.gltf', function (gltf) {
   model = gltf.scene;
+//centrer le mesh
+
+
   model.traverse((child) => {
     if (child.isMesh) {
         child.material = material;
@@ -133,6 +137,7 @@ loader.load('./assets/meshes/star-web.gltf', function (gltf) {
         child.material = material;
     }
     }
+    //follow path
     const o = { progress: 0 }
     gsap.to(o, {
       progress : 1,
@@ -144,34 +149,30 @@ loader.load('./assets/meshes/star-web.gltf', function (gltf) {
           onUpdate: () => {
             const point = curve.getPoint(o.progress);
             child.position.copy(point);
+
+
           }
       }
     })
-    //follow path
+
     }
   });
-  //centrer le mesh
-  var box = new THREE.Box3().setFromObject(model);
-  box.getCenter(model.position);
-  model.position.multiplyScalar( - 1 );
-  
+
   model.scale.set(160,160,160)
 
-  scene.add(model);
+    scene.add( model );
+ 
   animate(); 
 }, undefined, function (error) {
   console.error(error);
 });
 
-  var pivot = new THREE.Group();
-    scene.add( pivot );
-    pivot.add( model );
+
 // Animation
 function animate() {
   requestAnimationFrame(animate);
 
-  pivot.rotation.z -= 0.01;
-  
+  model.rotation.z -= 0.01;
   renderer.render(scene, camera);
 }
 
