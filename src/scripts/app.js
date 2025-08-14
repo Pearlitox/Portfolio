@@ -49,21 +49,21 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.to(".projets__2", {
   scrollTrigger: {
     trigger: ".projets__2",
-    start: "top bottom",
+    start: "top center",
     end: "bottom top",
     scrub: true,
   },
-  yPercent: -10,
+  yPercent: 100,
 });
 
 gsap.to(".projets__3", {
   scrollTrigger: {
     trigger: ".projets__3",
-    start: "top bottom",
+    start: "top center",
     end: "bottom top",
     scrub: true,
   },
-  yPercent: -120,
+  yPercent: 200,
 });
 
 //scene

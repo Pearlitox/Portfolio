@@ -151,26 +151,16 @@ flex-direction: column;
   width: 60%;
   height: 300vh;
   margin: 0 auto;
+    &__gallery{
+      display: flex;
+      flex-direction: row;
+    }
     &__img{
-      border-radius: 2.25em;
-      width: 50%;
+      border-radius: 1.5em;
+      width: 100%;
+      margin: 0.25em;
     }
-    &__1{
-      
-        z-index: -3;
-    }
-        &__2{
-          position: absolute;
-          right: 0%;
-
-        
-    }
-            &__3{
-              position: absolute;
-          right: 15%;
-
-        
-    }
+    
     &__text{
         margin: 0 0 0 3.38em;
         display: flex;
