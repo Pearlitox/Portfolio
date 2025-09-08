@@ -17,6 +17,10 @@ body{
     background-color: #e3e0ef;
     position: relative;
 }
+a{
+  text-decoration: none;
+  color: $color-btn;
+}
 .transition{
   width: 100%;
   height: 100%;
@@ -56,12 +60,14 @@ body{
 .title{
     margin: 0;
     font-family: kilo;
-    font-size: $title;
+    width: 90%;
+    text-align: center;
     line-height: 120%;
+    margin: 0 auto;
 }
 .subtitle{
     font-family: cyrene;
-    font-size: $subtitle;
+    font-size: $subtitlesmall;
     line-height: 100%;
     margin: 0;
 }
@@ -85,7 +91,7 @@ body{
   align-items: center;
   &__line{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
   }
   &__symbol{
@@ -96,7 +102,7 @@ body{
 .section{
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 80%;
   height: 100vh;
   margin: 0 auto;
 }
@@ -111,14 +117,16 @@ body{
   flex-flow: row nowrap;
   justify-content: space-between;
   &__list{
-    display: flex;
+    display: none;
     flex-flow: row nowrap;
     list-style: none;
     font-family: Cyrene;
     font-size: $p;
+    
   }
   &__logo{
     width: 3.15em;
+    margin: 1.5em 0;
   }
   &__el{
 
@@ -132,6 +140,7 @@ body{
   }
 }
 .btn{
+  transition: 0.1s;
   font-family: Cyrene;
   border: none;
   padding: 0.5em ;
@@ -140,24 +149,36 @@ body{
   background-color: $color-bg-btn;
   color: $color-btn;
   margin: 0.25em 0;
+  &:hover{
+    cursor: pointer;
+    transition: 0.1s;
+    background-color: $color-btn;
+    color: $color-bg-btn;
+  }
+}
+.aboutme{
+  justify-content: center;
 }
 .aboutme__skills{
-  width: 60%;
+  width: 80%;
 }
 .projets{
 display: flex;
 flex-direction: column;
 
-  width: 60%;
-  height: 300vh;
+  width: 80%;
+  height: 150vh;
   margin: 0 auto;
+
     &__img{
       border-radius: 2.25em;
-      width: 50%;
+      width: 45%;
     }
     &__1{
-      
-        z-index: -3;
+    
+      position: absolute;
+        
+        left: 35%;
     }
         &__2{
           position: absolute;
@@ -167,7 +188,7 @@ flex-direction: column;
     }
             &__3{
               position: absolute;
-          right: 15%;
+          right: 35%;
 
         
     }
@@ -209,7 +230,7 @@ z-index: 20;
         }
         &img{
           width: 100%;
-          aspect-ratio: 1;
+          
         }
     }
     &__bottom{
@@ -217,12 +238,12 @@ z-index: 20;
         margin: 0 auto;
         display: grid;
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr;
         gap: 3.38em;
     }
     &__stats{
         width: 50%;
-        position: sticky;
+
         top: 10%;
         height: fit-content;
     }
@@ -237,24 +258,33 @@ z-index: 20;
       display: flex;
       flex-direction: row;
       margin-bottom: 1.5em;
-            &--0{
-        width: 100%;
-        margin-right: 1.5em;
+      &col{
+        flex-direction: column;
+      }
+      
+      
 
-      }
-      &--1{
-        width: 50%;
-        margin-right: 1.5em;
-
-      }
-      &--2{
-        width: 50%;
-      }
     }
+    &__text{
+      padding-bottom: 3.38em;
+    }
+    &__image{
+      width: 100%;
+      margin-bottom: 1.5em;
+    }
+    &__pic{
+        width: 30%;
+        height: auto;
+        object-fit: contain;
+        margin-right: 1.5em;
+      }
+      &__link{
+        margin-bottom: 2.25em;
+      }
 
 }
 .stage{
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
 
 }
@@ -262,4 +292,101 @@ z-index: 20;
   background-color: black;
   height: 50vh;
   width: 100vw;
+  font-family: cyrene;
+  font-size: 2.25em;
+
+  &__txt{
+    width: 65%;
+    margin: 0 auto;
+  }
+  &__li{
+    margin: 0.67em 1em ;
+  }
+
+}
+.navbottom{
+  height: 15vh;
+  box-sizing: border-box;
+  padding: 2.25em 1.5em;
+  width: 100vw;
+  background-color: white;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  &__arrow{
+    width: 5.08em;
+  }
+  &__link{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+@media(min-width: 800px){
+  .nav__list{
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    font-family: Cyrene;
+    font-size: $p;
+  }
+  .title{
+    margin: 0 auto;
+    font-family: kilo;
+    font-size: $title;
+    line-height: 120%;
+}
+.subsubtitle{
+    font-family: cyrene;
+    font-size: $subtitlesmall;
+    line-height: 100%;
+    margin: 0;
+}
+.landing{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.aboutme__skills{
+  width: 60%;
+}
+.stage{
+  width: 60%;
+  margin: 0 auto;
+
+}
+.projets{
+  width: 60%;
+}
+.section{
+
+  width: 60%;
+
+}
+.casestudy__bottom{
+  width: 60%;
+  margin: 0 auto;
+  display: grid;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3.38em;
+}
+.casestudy__stats{
+        width: 50%;
+        position: sticky;
+        top: 10%;
+        height: fit-content;
+    }
+}
+.footer__copy{
+  color: white;
 }

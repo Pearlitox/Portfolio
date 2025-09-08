@@ -45,6 +45,15 @@ gsap.to(star2, {
 //gallery
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.to(".projets__1", {
+  scrollTrigger: {
+    trigger: ".projets__1",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+  },
+  yPercent: 10,
+});
 
 gsap.to(".projets__2", {
   scrollTrigger: {
@@ -53,7 +62,7 @@ gsap.to(".projets__2", {
     end: "bottom top",
     scrub: true,
   },
-  yPercent: -10,
+  yPercent: 70,
 });
 
 gsap.to(".projets__3", {
@@ -63,7 +72,7 @@ gsap.to(".projets__3", {
     end: "bottom top",
     scrub: true,
   },
-  yPercent: -120,
+  yPercent: 100,
 });
 
 //scene
@@ -95,6 +104,7 @@ const material2 = new THREE.MeshMatcapMaterial({ matcap: texture2 });
 //path
 const curve = new THREE.CatmullRomCurve3([
   new THREE.Vector3(0, 0, -0.01),
+    new THREE.Vector3(0, -0.01,0),
   new THREE.Vector3(0.02, -0.02, 0.15),
   new THREE.Vector3(0.08, -0.01, 0.1),
   new THREE.Vector3(0.1, -0.04, 0),
@@ -104,8 +114,6 @@ const curve = new THREE.CatmullRomCurve3([
 ]);
 let model;
 
-// Je prépare une let pour
-// contenir le mesh de l'étoile.
 let starMesh;
 
 var activeTheme = localStorage.getItem("theme");
@@ -120,8 +128,7 @@ loader.load(
     //centrer le mesh
     model.traverse((child) => {
       if (child.isMesh) {
-        // Je mets à jour la let starWeb
-        // pour avoir la référence du mesh.
+
         starMesh = child;
         child.material = material;
 
@@ -180,18 +187,30 @@ loader.load(
 function animate() {
   requestAnimationFrame(animate);
 
-  // On vérifie que la "let model" n'est pas null
-  // Comme tu lances directement l'animation directement
-  // pendant quelques secondes le temps de charger ton
-  // star-web.gltf il y avait des erreurs.
   if (model) {
-    // On update la rotation du mesh de l'étoile.
-    // La 'let model' contient plusieurs éléments,
-    // sans doute un groupe qui contient ta courbe
-    // et ton étoile.
+
     starMesh.rotation.z -= 0.01;
     renderer.render(scene, camera);
   }
 }
 
 animate();
+
+
+const me = document.querySelector(".moi");
+me.addEventListener("click", function() {
+  const moi = document.querySelector(".aboutme");
+    moi.scrollIntoView({ behavior: "smooth" });
+});
+
+const probtn = document.querySelector(".gallery");
+probtn.addEventListener("click", function() {
+    const pro = document.querySelector(".projets");
+    pro.scrollIntoView({ behavior: "smooth" });
+});
+
+const contact = document.querySelector(".interested");
+contact.addEventListener("click", function() {
+    const stage = document.querySelector(".stage");
+    stage.scrollIntoView({ behavior: "smooth" });
+});

@@ -16,6 +16,11 @@ body {
   position: relative;
 }
 
+a {
+  text-decoration: none;
+  color: #dfcae9;
+}
+
 .transition {
   width: 100%;
   height: 100%;
@@ -56,13 +61,15 @@ body {
 .title {
   margin: 0;
   font-family: kilo;
-  font-size: clamp(3.7969rem, 3.1365rem + 3.3016vw, 5.6953rem);
+  width: 90%;
+  text-align: center;
   line-height: 120%;
+  margin: 0 auto;
 }
 
 .subtitle {
   font-family: cyrene;
-  font-size: clamp(2.5313rem, 2.091rem + 2.2011vw, 3.7969rem);
+  font-size: clamp(1.6875rem, 1.394rem + 1.4674vw, 2.5313rem);
   line-height: 100%;
   margin: 0;
 }
@@ -90,7 +97,7 @@ body {
 }
 .landing__line {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 .landing__symbol {
@@ -101,7 +108,7 @@ body {
 .section {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 80%;
   height: 100vh;
   margin: 0 auto;
 }
@@ -118,7 +125,7 @@ body {
   justify-content: space-between;
 }
 .nav__list {
-  display: flex;
+  display: none;
   flex-flow: row nowrap;
   list-style: none;
   font-family: Cyrene;
@@ -126,6 +133,7 @@ body {
 }
 .nav__logo {
   width: 3.15em;
+  margin: 1.5em 0;
 }
 .nav__el {
   padding: 0 0.5em;
@@ -137,6 +145,7 @@ body {
 }
 
 .btn {
+  transition: 0.1s;
   font-family: Cyrene;
   border: none;
   padding: 0.5em;
@@ -146,24 +155,35 @@ body {
   color: #dfcae9;
   margin: 0.25em 0;
 }
+.btn:hover {
+  cursor: pointer;
+  transition: 0.1s;
+  background-color: #dfcae9;
+  color: #000000;
+}
+
+.aboutme {
+  justify-content: center;
+}
 
 .aboutme__skills {
-  width: 60%;
+  width: 80%;
 }
 
 .projets {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  height: 300vh;
+  width: 80%;
+  height: 150vh;
   margin: 0 auto;
 }
 .projets__img {
   border-radius: 2.25em;
-  width: 50%;
+  width: 45%;
 }
 .projets__1 {
-  z-index: -3;
+  position: absolute;
+  left: 35%;
 }
 .projets__2 {
   position: absolute;
@@ -171,7 +191,7 @@ body {
 }
 .projets__3 {
   position: absolute;
-  right: 15%;
+  right: 35%;
 }
 .projets__text {
   margin: 0 0 0 3.38em;
@@ -206,19 +226,17 @@ body {
 }
 .casestudy__topimg {
   width: 100%;
-  aspect-ratio: 1;
 }
 .casestudy__bottom {
   width: 60%;
   margin: 0 auto;
   display: grid;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
   gap: 3.38em;
 }
 .casestudy__stats {
   width: 50%;
-  position: sticky;
   top: 10%;
   height: -moz-fit-content;
   height: fit-content;
@@ -234,25 +252,128 @@ body {
   flex-direction: row;
   margin-bottom: 1.5em;
 }
-.casestudy__images--0 {
+.casestudy__imagescol {
+  flex-direction: column;
+}
+.casestudy__text {
+  padding-bottom: 3.38em;
+}
+.casestudy__image {
   width: 100%;
+  margin-bottom: 1.5em;
+}
+.casestudy__pic {
+  width: 30%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
   margin-right: 1.5em;
 }
-.casestudy__images--1 {
-  width: 50%;
-  margin-right: 1.5em;
-}
-.casestudy__images--2 {
-  width: 50%;
+.casestudy__link {
+  margin-bottom: 2.25em;
 }
 
 .stage {
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
 }
 
 .footer {
   background-color: black;
-  height: 15em;
+  height: 50vh;
   width: 100vw;
+  font-family: cyrene;
+  font-size: 2.25em;
+}
+.footer__txt {
+  width: 65%;
+  margin: 0 auto;
+}
+.footer__li {
+  margin: 0.67em 1em;
+}
+
+.navbottom {
+  height: 15vh;
+  box-sizing: border-box;
+  padding: 2.25em 1.5em;
+  width: 100vw;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+.navbottom__arrow {
+  width: 5.08em;
+}
+.navbottom__link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .nav__list {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    font-family: Cyrene;
+    font-size: clamp(1.125rem, 0.9293rem + 0.9783vw, 1.6875rem);
+  }
+  .title {
+    margin: 0 auto;
+    font-family: kilo;
+    font-size: clamp(3.7969rem, 3.1365rem + 3.3016vw, 5.6953rem);
+    line-height: 120%;
+  }
+  .subsubtitle {
+    font-family: cyrene;
+    font-size: clamp(1.6875rem, 1.394rem + 1.4674vw, 2.5313rem);
+    line-height: 100%;
+    margin: 0;
+  }
+  .landing {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .landing__line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .aboutme__skills {
+    width: 60%;
+  }
+  .stage {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .projets {
+    width: 60%;
+  }
+  .section {
+    width: 60%;
+  }
+  .casestudy__bottom {
+    width: 60%;
+    margin: 0 auto;
+    display: grid;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3.38em;
+  }
+  .casestudy__stats {
+    width: 50%;
+    position: sticky;
+    top: 10%;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+.footer__copy {
+  color: white;
 }/*# sourceMappingURL=app.css.map */
