@@ -6,7 +6,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { blur, element } from "three/tsl";
 
 //Page transition
-
+const drawing = document.querySelector(".casestudy__drawingbtn");
+const picture = document.querySelector(".casestudy__drawing");
+const x = document.querySelector(".casestudy__cross")
+drawing.addEventListener("click", function(){
+  
+  picture.classList.remove('hidden');
+  x.classList.remove('hidden')
+})
+x.addEventListener("click",function(){
+  picture.classList.add('hidden');
+  x.classList.add('hidden');
+})
 const transition = document.querySelector(".transition");
 const star = document.querySelector(".transition__star");
 const star2 = document.querySelector(".transition__star2");
@@ -36,12 +47,13 @@ if (star && star2 && links && transition) {
       }, 2000);
     });
   });
-}
+
 gsap.to(star2, {
   scale: 0,
   duration: 1,
   rotate: 70,
 });
+}
 //gallery
 
 gsap.registerPlugin(ScrollTrigger);
@@ -52,7 +64,7 @@ gsap.to(".projets__1", {
     end: "bottom top",
     scrub: true,
   },
-  yPercent: 10,
+  yPercent: 0,
 });
 
 gsap.to(".projets__2", {
@@ -62,7 +74,7 @@ gsap.to(".projets__2", {
     end: "bottom top",
     scrub: true,
   },
-  yPercent: 70,
+  yPercent: 10,
 });
 
 gsap.to(".projets__3", {
@@ -72,10 +84,11 @@ gsap.to(".projets__3", {
     end: "bottom top",
     scrub: true,
   },
-  yPercent: 100,
+  yPercent: 20,
 });
 
 //scene
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -87,11 +100,13 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector(".bg"),
   antialias: true,
 });
+if (scene && camera && renderer){
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 renderer.render(scene, camera);
 scene.background = new THREE.Color().setHex(0xe3e0ef);
+}
 //objet
 const texture = new THREE.TextureLoader().load(
   "./assets/images/matcap-iridescent.png"
@@ -109,7 +124,7 @@ const curve = new THREE.CatmullRomCurve3([
   new THREE.Vector3(0.08, -0.01, 0.1),
   new THREE.Vector3(0.1, -0.04, 0),
   new THREE.Vector3(-0.15, 0.01, -0.07),
-  new THREE.Vector3(0, 0, 0.10),
+  new THREE.Vector3(0, 0.02, 0.10),
 
 ]);
 let model;
@@ -121,6 +136,9 @@ if (activeTheme) {
   document.body.setAttribute("data-theme", activeTheme);
 }
 const loader = new GLTFLoader();
+if (texture && texture2 && material && curve && model && starMesh && loader){
+
+
 loader.load(
   "./assets/meshes/star-web.gltf",
   function (gltf) {
@@ -182,6 +200,8 @@ loader.load(
     console.error(error);
   }
 );
+}
+
 
 // Animation
 function animate() {
@@ -211,6 +231,7 @@ probtn.addEventListener("click", function() {
 
 const contact = document.querySelector(".interested");
 contact.addEventListener("click", function() {
-    const stage = document.querySelector(".stage");
+    const stage = document.querySelector(".stage__subtitle");
     stage.scrollIntoView({ behavior: "smooth" });
 });
+
