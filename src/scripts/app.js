@@ -9,6 +9,7 @@ import { blur, element } from "three/tsl";
 const drawing = document.querySelector(".casestudy__drawingbtn");
 const picture = document.querySelector(".casestudy__drawing");
 const x = document.querySelector(".casestudy__cross")
+if(drawing&&picture&&x){
 drawing.addEventListener("click", function(){
   
   picture.classList.remove('hidden');
@@ -17,7 +18,9 @@ drawing.addEventListener("click", function(){
 x.addEventListener("click",function(){
   picture.classList.add('hidden');
   x.classList.add('hidden');
-})
+});  
+}
+
 const transition = document.querySelector(".transition");
 const star = document.querySelector(".transition__star");
 const star2 = document.querySelector(".transition__star2");
@@ -136,7 +139,6 @@ if (activeTheme) {
   document.body.setAttribute("data-theme", activeTheme);
 }
 const loader = new GLTFLoader();
-if (texture && texture2 && material && curve && model && starMesh && loader){
 
 
 loader.load(
@@ -200,7 +202,7 @@ loader.load(
     console.error(error);
   }
 );
-}
+
 
 
 // Animation
