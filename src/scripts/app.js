@@ -119,6 +119,10 @@ const texture2 = new THREE.TextureLoader().load(
 );
 const material = new THREE.MeshMatcapMaterial({ matcap: texture });
 const material2 = new THREE.MeshMatcapMaterial({ matcap: texture2 });
+const material3 = new THREE.MeshPhysicalMaterial({
+  transmission:1,
+  roughness:0,
+});
 //path
 const curve = new THREE.CatmullRomCurve3([
   new THREE.Vector3(0, 0, -0.01),
@@ -130,6 +134,8 @@ const curve = new THREE.CatmullRomCurve3([
   new THREE.Vector3(0, 0.02, 0.10),
 
 ]);
+const light = new THREE.DirectionalLight( 0xffffff, 5 );
+light.position.set(0,10,0);
 let model;
 
 let starMesh;
@@ -193,7 +199,7 @@ loader.load(
 
     model.scale.set(160, 160, 160);
 
-    scene.add(model);
+    scene.add(model,light);
 
     animate();
   },
@@ -220,20 +226,23 @@ animate();
 
 
 const me = document.querySelector(".moi");
+const probtn = document.querySelector(".gallery");
+const contact = document.querySelector(".interested");
+
+if(me && probtn && contact){
+
 me.addEventListener("click", function() {
   const moi = document.querySelector(".aboutme");
-    moi.scrollIntoView({ behavior: "smooth" });
+  moi.scrollIntoView({ behavior: "smooth" });
 });
-
-const probtn = document.querySelector(".gallery");
 probtn.addEventListener("click", function() {
     const pro = document.querySelector(".projets");
     pro.scrollIntoView({ behavior: "smooth" });
 });
-
-const contact = document.querySelector(".interested");
 contact.addEventListener("click", function() {
     const stage = document.querySelector(".stage__subtitle");
     stage.scrollIntoView({ behavior: "smooth" });
 });
+
+}
 

@@ -50,7 +50,7 @@ a{
         }
     }
 }
-.bg{
+.bg, .bgpg{
   position: fixed;
   top: 0;
   left: 0;
@@ -192,7 +192,14 @@ flex-direction: column;
       border-radius: 1.5em;
       width: 100%;
     }
+    &__playground{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     
+      margin-top: 3.32em;
+    }
     &__text{
         margin: 0 0 0 3.38em;
         display: flex;
@@ -390,7 +397,8 @@ z-index: 20;
 
 }
 .projets{
-  width: 60%;
+  width: 50%;
+  height: fit-content;
 }
 .section{
 
